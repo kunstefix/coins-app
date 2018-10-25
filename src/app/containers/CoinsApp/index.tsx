@@ -14,8 +14,14 @@ export class CoinsApp extends React.Component<any, any> {
     this.coinsStore = this.props[STORE_COINS] as CoinsStore;
   }
 
+  refreshList = () => {
+    this.coinsStore.fetchCoins();
+
+  }
+
+
   componentDidMount() {
-    this.coinsStore.fetchCoins()
+    this.refreshList();
   }
 
   render() {
@@ -23,7 +29,10 @@ export class CoinsApp extends React.Component<any, any> {
     return (
       <div className="container">
         <h1>CoinsApp Container </h1>
-        <CoinsList coins={this.coinsStore.coins} />
+        <CoinsList
+          onRefresh={this.refreshList}
+          coins={this.coinsStore.coins}
+        />
       </div>
     );
   }

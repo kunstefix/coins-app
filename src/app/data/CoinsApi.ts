@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { CoinModel } from 'app/models/CoinModel';
 import { action } from 'mobx';
+import { tickerUrl } from 'app/constants/Urls';
 
-const apilink = 'https://api.coinmarketcap.com/v2/ticker/?limit=100'
 
 export class CoinsApi {
     constructor() { }
@@ -11,7 +11,7 @@ export class CoinsApi {
     async getCoins() {
         console.log("fetcham!!!");
         try {
-            const response = await axios.get(apilink);
+            const response = await axios.get(tickerUrl);
             const dataObject = response.data.data;
             const objectsArray = Object.keys(dataObject).map(i => dataObject[i]);
             const formattedData: CoinModel[] = objectsArray.map(
