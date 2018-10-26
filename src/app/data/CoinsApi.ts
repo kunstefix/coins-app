@@ -1,17 +1,16 @@
 import axios from 'axios';
 import { CoinModel } from 'app/models/CoinModel';
 import { action } from 'mobx';
-import { tickerUrl } from 'app/constants/Urls';
-
+import { URL_TICKER } from 'app/constants/Urls';
 
 export class CoinsApi {
     constructor() { }
 
     @action
-    async getCoins() {
-        console.log("fetcham!!!");
+    async getCoins(fiat: string) {
+        const url = `${URL_TICKER}&convert=${fiat}`
         try {
-            const response = await axios.get(tickerUrl);
+            const response = await axios.get(url);
             const dataObject = response.data.data;
             const objectsArray = Object.keys(dataObject).map(i => dataObject[i]);
             const formattedData: CoinModel[] = objectsArray.map(
@@ -20,8 +19,8 @@ export class CoinsApi {
                         obj.name,
                         obj.rank,
                         obj.symbol,
-                        obj.quotes.USD.price,
-                        obj.quotes.USD.percent_change_24h
+                        obj.quotes[fiat].price,
+                        obj.quotes[fiat].percent_change_24h
                     );
                 }
             );

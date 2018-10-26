@@ -16,9 +16,7 @@ export class CoinsApp extends React.Component<any, any> {
 
   refreshList = () => {
     this.coinsStore.fetchCoins();
-
   }
-
 
   componentDidMount() {
     this.refreshList();

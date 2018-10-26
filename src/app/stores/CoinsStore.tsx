@@ -9,15 +9,23 @@ export class CoinsStore {
         this.coins = fixtures;
         this.coinsApi = coinsApi;
     }
+
     readonly coinsApi: CoinsApi;
+
     @observable public coins: Array<CoinModel>;
+    @observable public selectedFiat: string = 'EUR';
 
     @action async fetchCoins() {
-        const retrievedCoins = await this.coinsApi.getCoins();
+        const retrievedCoins = await this.coinsApi.getCoins(this.selectedFiat);
 
         runInAction(() => {
             this.coins = retrievedCoins;
         });
+    }
+
+    @action setSelectedFiat(fiat: string) {
+        this.selectedFiat = fiat;
+        console.log("Selected FIAT: ", fiat);
     }
 
 }
