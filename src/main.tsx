@@ -6,12 +6,13 @@ import { CoinModel } from 'app/models/CoinModel';
 import { useStrict } from 'mobx';
 import { Provider } from 'mobx-react';
 import { CoinsApi } from 'app/data/CoinsApi';
+import { createBrowserHistory } from 'history';
 
 const defaultCoins = [
-  new CoinModel("Bitcoin", 3, "BTC", 324, 23),
-  new CoinModel("Litecoin", 3, "BTC", 324, 23),
-  new CoinModel("Ethereum", 3, "BTC", 324, 23),
-  new CoinModel("Dogecoin", 3, "BTC", 324, 12)
+  new CoinModel(1, "Bitcoin", 3, "BTC", 324, 23),
+  new CoinModel(2, "Litecoin", 3, "BTC", 324, 23),
+  new CoinModel(3, "Ethereum", 3, "BTC", 324, 23),
+  new CoinModel(4, "Dogecoin", 3, "BTC", 324, 12)
 ];
 
 //create rest API instance
@@ -21,12 +22,13 @@ const coinsApi = new CoinsApi();
 useStrict(true);
 
 // prepare MOBX store
-const rootStore = createStores(coinsApi, defaultCoins);
+const history = createBrowserHistory();
+const rootStore = createStores(history, coinsApi, defaultCoins);
 
 // render react DOM
 ReactDOM.render(
   <Provider {...rootStore}>
-    <App />
+    <App store={rootStore} history={history} />
   </Provider>
   ,
   document.getElementById('root')

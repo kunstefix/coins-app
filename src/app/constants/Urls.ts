@@ -1,2 +1,5 @@
 const LIMIT = 10;
-export const URL_TICKER = `https://api.coinmarketcap.com/v2/ticker/?limit=${LIMIT}`
+const BASE = `https://api.coinmarketcap.com/v2/`;
+export const URL_TICKER = `${BASE}ticker/`
+export const URL_TICKER_LIMIT = `${URL_TICKER}?limit=${LIMIT}`
+

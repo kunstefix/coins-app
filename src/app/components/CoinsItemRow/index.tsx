@@ -25,7 +25,7 @@ export class CoinsItemRow extends React.Component<CoinsItemProps, CoinsItemState
     render() {
         const coin = this.props.coin;
         return (
-            <tr key={coin.name} onClick={ this.handleClickItem } >
+            <tr style={{cursor: 'pointer'}} key={coin.name} onClick={ this.handleClickItem } >
                 <td>{coin.name}</td>
                 <td>{coin.rank}</td>
                 <td>{coin.symbol}</td>
