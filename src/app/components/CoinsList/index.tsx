@@ -73,12 +73,14 @@ export class CoinsList extends React.Component<CoinsListProps, CoinsListState> {
         return (
             <Panel>
                 <Panel.Heading>
-                    <h3>List &nbsp;&nbsp;
-                    <Button onClick={this.refreshList}>
-                            <span  className="glyphicon glyphicon-refresh">
+                    <h3>List
+                        &nbsp;&nbsp;
+                        <Button onClick={this.refreshList}>
+                            <span className="glyphicon glyphicon-refresh">
                             </span>
-                    </Button>
-
+                        </Button>
+                        &nbsp;&nbsp;
+                        {this.coinsStore.loading && <span>Loading...</span>}
                     </h3>
                 </Panel.Heading>
 

@@ -1,14 +1,13 @@
 import { CoinsStore } from './CoinsStore';
-import { CoinModel } from '../models/CoinModel';
 import { STORE_COINS, STORE_ROUTER } from 'app/constants/Stores';
-import { CoinsApi } from 'app/data/CoinsApi';
+import { CoinsApiClient } from 'app/data/CoinsApiClient';
 import RouterStore from './RouterStore';
 import { History } from 'history';
 
 
-export function createStores(history: History, coinsApi: CoinsApi, defaultCoins?: CoinModel[]) {
+export function createStores(history: History, coinsApi: CoinsApiClient) {
 
-  const coinsStore = new CoinsStore(defaultCoins, coinsApi);
+  const coinsStore = new CoinsStore(coinsApi);
   const routerStore = new RouterStore(history);
   return {
     [STORE_COINS]: coinsStore,

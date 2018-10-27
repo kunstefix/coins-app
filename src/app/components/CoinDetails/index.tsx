@@ -27,8 +27,11 @@ export class CoinDetails extends React.Component<CoinDetailsProps, CoinDetailsSt
     }
 
     componentDidMount() {
-        console.log("ID: ", this.props.match.params.id);
         this.refreshCoin();
+    }
+
+    componentWillUnmount(){
+        this.coinsStore.resetCoin();
     }
 
     refreshCoin = () => {
@@ -60,6 +63,8 @@ export class CoinDetails extends React.Component<CoinDetailsProps, CoinDetailsSt
                             <span className="glyphicon glyphicon-refresh">
                             </span>
                         </Button>
+                        &nbsp; &nbsp;
+                        {this.coinsStore.loading && <span>Loading...</span>}
                     </h3>
 
                 </Panel.Heading>

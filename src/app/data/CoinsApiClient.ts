@@ -2,7 +2,7 @@ import axios from 'axios';
 import { CoinModel } from 'app/models/CoinModel';
 import { URL_TICKER, URL_TICKER_LIMIT } from 'app/constants/Urls';
 
-export class CoinsApi {
+export class CoinsApiClient {
     constructor() { }
 
     async getCoins(fiat: string) {
@@ -23,7 +23,6 @@ export class CoinsApi {
                     );
                 }
             );
-            console.log("FORMATTED DATA: ", formattedData);
             return formattedData;
         } catch (error) {
             console.error(error);
@@ -35,7 +34,6 @@ export class CoinsApi {
         try {
             const response = await axios.get(url);
             const dataObject = response.data.data;
-            console.log("RETRIEVED DATA SPECIFIC: ", dataObject);
 
             const obj = new CoinModel(
                 dataObject.id,
