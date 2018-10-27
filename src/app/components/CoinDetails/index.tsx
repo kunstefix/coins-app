@@ -79,7 +79,7 @@ export class CoinDetails extends React.Component<CoinDetailsProps, CoinDetailsSt
                         <br />
 
                         <dt>Price</dt>
-                        <dd>{price}</dd>
+                        <dd>{price} {this.coinsStore.selectedFiat}</dd>
                         <br />
 
                         <dt>Symbol</dt>

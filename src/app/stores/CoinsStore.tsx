@@ -9,14 +9,16 @@ export class CoinsStore {
         this.coins = [];
         this.coinsApi = coinsApi;
         this.coin = new CoinModel()
+        this.selectedFiat = "EUR";
+        this.loading = false;
     }
 
     readonly coinsApi: CoinsApiClient;
 
     @observable public coin: CoinModel;
     @observable public coins: Array<CoinModel>;
-    @observable public selectedFiat: string = 'EUR';
-    @observable public loading: boolean = false;
+    @observable public selectedFiat: string;
+    @observable public loading: boolean;
 
     @action async fetchCoins() {
         this.startLoading();
