@@ -5,7 +5,7 @@
   "description": "Cryoptocurrencies list app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "webpack-dev-server --mode development --hot --progress --colors --port 3000 --open",
     "build": "webpack -p --progress --colors",
     "prettier": "prettier --write \"src/**/*.{ts,tsx,css}\""
@@ -13,6 +13,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/classnames": "^2.2.3",
+    "@types/enzyme": "^3.1.14",
     "@types/node": "^9.4.6",
     "@types/react": "^16.0.40",
     "@types/react-dom": "^16.0.4",
@@ -20,10 +21,13 @@
     "@types/webpack": "^3.8.8",
     "babel-loader": "^7.1.3",
     "css-loader": "^0.28.10",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.6.0",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^1.1.11",
     "html-loader": "^1.0.0-alpha.0",
     "html-webpack-plugin": "^3.0.4",
+    "jest": "^23.6.0",
     "mobx-react-devtools": "^4.2.15",
     "postcss": "^6.0.19",
     "postcss-browser-reporter": "^0.5.0",
@@ -34,6 +38,7 @@
     "postcss-url": "^7.3.1",
     "prettier": "^1.11.1",
     "react-hot-loader": "^4.0.0",
+    "react-test-renderer": "^16.6.0",
     "style-loader": "^0.20.2",
     "ts-loader": "^4.0.0",
     "typescript": "^2.7.2",
@@ -45,15 +50,31 @@
     "webpack-hot-middleware": "^2.21.1"
   },
   "dependencies": {
+    "@types/enzyme-adapter-react-16": "^1.0.3",
+    "@types/jest": "^23.3.7",
     "@types/react-bootstrap": "^0.32.14",
     "axios": "^0.18.0",
     "classnames": "^2.2.5",
+    "g": "^2.0.1",
     "mobx": "^3.6.1",
     "mobx-react": "^4.4.2",
     "mobx-react-router": "^4.0.1",
     "react": "^16.2.0",
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.2.0",
-    "react-router": "^4.2.0"
+    "react-router": "^4.2.0",
+    "ts-jest": "^23.10.4"
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "<rootDir>src/assets/setupTests.ts",
+    "transform": {
+      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ]
   }
 }
