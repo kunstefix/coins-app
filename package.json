@@ -75,6 +75,11 @@
       "ts",
       "tsx",
       "js"
+    ],
+    "moduleDirectories": [
+      ".",
+      "src",
+      "node_modules"
     ]
   }
 }
